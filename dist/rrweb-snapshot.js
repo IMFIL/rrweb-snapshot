@@ -222,6 +222,7 @@ var rrwebSnapshot = (function (exports) {
                   var _c = n.getBoundingClientRect(), width = _c.width, height = _c.height;
                   attributes_1.rr_width = width + "px";
                   attributes_1.rr_height = height + "px";
+                  attributes_1.rr_background = 'grey';
               }
               return {
                   type: exports.NodeType.Element,
@@ -880,6 +881,9 @@ var rrwebSnapshot = (function (exports) {
                       }
                       if (name === 'rr_height') {
                           node_1.style.height = value;
+                      }
+                      if (name === 'rr_background') {
+                          node_1.style.background = value;
                       }
                       if (name === 'rr_mediaState') {
                           switch (value) {

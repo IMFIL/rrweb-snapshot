@@ -220,6 +220,7 @@ function serializeNode(n, doc, blockClass, inlineStylesheet, maskAllInputs) {
                 var _c = n.getBoundingClientRect(), width = _c.width, height = _c.height;
                 attributes_1.rr_width = width + "px";
                 attributes_1.rr_height = height + "px";
+                attributes_1.rr_background = 'grey';
             }
             return {
                 type: NodeType.Element,
@@ -878,6 +879,9 @@ function buildNode(n, doc, HACK_CSS) {
                     }
                     if (name === 'rr_height') {
                         node_1.style.height = value;
+                    }
+                    if (name === 'rr_background') {
+                        node_1.style.background = value;
                     }
                     if (name === 'rr_mediaState') {
                         switch (value) {
