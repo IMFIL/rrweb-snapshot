@@ -11,7 +11,7 @@ var rrwebSnapshot = (function (exports) {
   })(exports.NodeType || (exports.NodeType = {}));
 
   var _id = 1;
-  var symbolAndNumberRegex = RegExp('[^a-z]');
+  var symbolAndNumberRegex = RegExp('[^a-z1-6]');
   function genId() {
       return _id++;
   }
@@ -114,7 +114,7 @@ var rrwebSnapshot = (function (exports) {
       return resultingSrcsetString;
   }
   function absoluteToDoc(doc, attributeValue) {
-      if (attributeValue.trim() === '') {
+      if (!attributeValue || attributeValue.trim() === '') {
           return attributeValue;
       }
       var a = doc.createElement('a');
@@ -857,6 +857,9 @@ var rrwebSnapshot = (function (exports) {
                       try {
                           if (n.isSVG && name === 'xlink:href') {
                               node_1.setAttributeNS('http://www.w3.org/1999/xlink', name, value);
+                          }
+                          else if (name == 'onload' || name == 'onclick' || name.substring(0, 7) == 'onmouse') {
+                              node_1.setAttribute('_' + name, value);
                           }
                           else {
                               node_1.setAttribute(name, value);
